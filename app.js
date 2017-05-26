@@ -1,12 +1,23 @@
 const express = require("express");
 const app = express();
-
+const bodyParser = require('body-parser');
 const janeParkRoutes = require("./router/janepark.js");
 const countriesRoutes = require("./router/countries.js");
 
 
 app.set("view engine", "ejs");
 app.use(express.static("assets"));
+
+// Configure your app to correctly interpret POST
+// request bodies. The urlencoded one handles HTML
+// <form> POSTs. The json one handles jQuery POSTs.
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+app.get("/search", function (req,res) {
+  // console.log(req.body)
+  res.render("page/form")
+})
 
 app.use("/countries", countriesRoutes);
 app.use("/", janeParkRoutes);

@@ -3,9 +3,9 @@ const router = express.Router();
 const countries = require("../json/countries.json");
 //	console.log(countries);
 
-// ---> /countries/:code
-router.get("/:code", function(req, res) {
-	var country = countries[req.params.code.toUpperCase()];
+// ---> /countries
+router.post("/", function(req, res) {
+	var country = countries[req.body.code.toUpperCase()];
 
 	if (!country) {
 		res.status(400);
