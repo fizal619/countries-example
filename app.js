@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.get("/search", function (req,res) {
   // console.log(req.body)
-  res.render("page/form")
+  res.render("page/form", {id: req.params.potato})
 })
 
 app.use("/countries", countriesRoutes);
